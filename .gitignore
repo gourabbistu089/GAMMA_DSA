@@ -1,0 +1,5 @@
+
+# add class files
+*.class
+# add .exe files
+*.exe
