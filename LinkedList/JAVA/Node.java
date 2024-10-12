@@ -54,6 +54,46 @@ public class Node {
         }
         return false;
     }
+    // Remove Head Node
+    static Node removeHead(Node head){
+    if(head == null) return null;
+    Node temp = head.next;
+   
+    return temp;
+}
+
+// Remove Tail Node
+static Node removeTail(Node head){
+    if(head == null || head.next == null) return null;
+    Node temp = head;
+    while(temp.next.next!=null){
+        temp=temp.next;
+    }
+    temp.next = null;
+    return head;
+}
+// Remove Kth Node from head
+
+static Node  removeKthNode(Node head, int k){
+    if(head==null)return head;
+    if(k==1){
+        head=head.next;
+        return head;
+    }
+    Node temp=head, prev=null;
+    int cnt = 0;
+    while (temp!=null)
+    {
+        cnt++;
+        if(cnt==k){
+            prev.next = prev.next.next;
+            break;
+        }
+        prev=temp;
+        temp=temp.next;
+    }
+    return head;
+}
 
     public static void main(String[] args) {
 
@@ -75,5 +115,15 @@ public class Node {
         } else {
             System.out.println("Not Found");
         }
+        System.out.println("Removed Head");
+        head = removeHead(head);
+    printLinkedList(head);
+
+    System.out.println("Removed Tail");
+    head = removeTail(head);
+    printLinkedList(head);
+    System.out.println("Removed Kth Node"); 
+    head = removeKthNode(head, 3);
+    printLinkedList(head);
     }
 }
